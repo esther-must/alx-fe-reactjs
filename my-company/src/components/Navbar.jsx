@@ -3,11 +3,11 @@ import { FaHome, FaInfoCircle, FaServicestack, FaEnvelope } from "react-icons/fa
 
 function Navbar() {
     return (
-      <nav style={{ background: "#333", padding: "15px", textAlign: "center" }}>
-        <Link to="/" style={linkStyle}><FaHome /> Home</Link>
-        <Link to="/about" style={linkStyle}><FaInfoCircle /> About</Link>
-        <Link to="/services" style={linkStyle}><FaServicestack /> Services</Link>
-        <Link to="/contact" style={linkStyle}><FaEnvelope /> Contact</Link>
+      <nav style={{ backgroundColor: "#333", padding: "15px", textAlign: "center", color:"fff", display: "flex", justifyContent: "center" }}>
+        <Link to="/" style={{ margin: "10px", color: "#fff", textDecoration: "none", fontSize: "18px" }}><FaHome /> Home</Link>
+        <Link to="/about" style={{ margin: "10px", color: "#fff", textDecoration: "none", fontSize: "18px" }}><FaInfoCircle /> About</Link>
+        <Link to="/services" style={{ margin: "10px", color: "#fff", textDecoration: "none", fontSize: "18px" }}><FaServicestack /> Services</Link>
+        <Link to="/contact" style={{ margin: "10px", color: "#fff", textDecoration: "none", fontSize: "18px" }}><FaEnvelope /> Contact</Link>
       </nav>
     );
 }
