@@ -8,6 +8,10 @@ const AddRecipeForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!title.trim() || !description.trim()) {
+      alert("Please enter a title and description.");
+      return;
+    }
     addRecipe({ id: Date.now(), title, description });
     setTitle('');
     setDescription('');
