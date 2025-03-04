@@ -26,15 +26,17 @@ const RegistrationForm = () => {
     }
   };
 
+  const { username, email, password } = formData;
+
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" name="username" value={formData.username} onChange={handleChange} placeholder="Username" />
+      <input type="text" name="username" value={username} onChange={handleChange} placeholder="Username" />
       {errors.username && <p>{errors.username}</p>}
       
-      <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
+      <input type="email" name="email" value={email} onChange={handleChange} placeholder="Email" />
       {errors.email && <p>{errors.email}</p>}
       
-      <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
+      <input type="password" name="password" value={password} onChange={handleChange} placeholder="Password" />
       {errors.password && <p>{errors.password}</p>}
       
       <button type="submit">Register</button>
