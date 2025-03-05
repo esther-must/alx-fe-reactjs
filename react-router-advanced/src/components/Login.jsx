@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import auth from "../auth";
+import useAuth from "../useAuth";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleLogin = () => {
-    auth.login(() => navigate("/profile"));
+    login(() => navigate("/profile"));
   };
 
   return (
