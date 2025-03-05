@@ -38,14 +38,13 @@ test("deletes a todo", async () => {
     render(<TodoList />);
     
     const todoItem = screen.getByText("Learn React").closest("li"); // Get the parent <li>
+    expect(todoItem).toBeInTheDocument();
+    
     const deleteButton = within(todoItem).getByRole("button", { name: /delete/i });
-
-    console.log("Before delete:", screen.debug());
   
     fireEvent.click(deleteButton);
   
     await waitFor(() => {
-        console.log("After delete:", screen.debug());
         expect(screen.queryByText("Learn React")).not.toBeInTheDocument();
         });
     });  
