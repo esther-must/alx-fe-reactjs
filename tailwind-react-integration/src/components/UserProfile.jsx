@@ -1,6 +1,6 @@
 function UserProfile() {
     return (
-        <div className="bg-gray-100 p-4 sm:p-8 max-w-xs sm:max-w-sm mx-auto my-10 rounded-lg shadow-lg text-center transition-shadow duration-300 ease-in-out hover:shadow-xl">
+        <div className="bg-gray-100 md:p-8 sm:p-4 max-w-xs sm:max-w-sm mx-auto my-10 rounded-lg shadow-lg text-center transition-shadow duration-300 ease-in-out hover:shadow-xl">
             <img
                 src="https://esthercoders.netlify.app/images/profile-picture.png"
                 alt="User"
@@ -15,6 +15,6 @@ function UserProfile() {
         </div>
     );
 }
-  
+
 export default UserProfile;
   
