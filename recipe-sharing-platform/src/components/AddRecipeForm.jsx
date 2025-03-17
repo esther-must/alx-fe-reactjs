@@ -4,20 +4,30 @@ const AddRecipeForm = ({ onAddRecipe }) => {
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({}); // Fix: Properly define errors state
 
+  // Validate form inputs
+  const validate = () => {
+    let tempErrors = {};
+    
+    if (!title.trim()) tempErrors.title = "Title is required.";
+    if (!ingredients.trim()) tempErrors.ingredients = "Ingredients are required.";
+    if (!instructions.trim()) tempErrors.instructions = "Preparation steps are required.";
+
+    setErrors(tempErrors);
+    
+    return Object.keys(tempErrors).length === 0; // Returns true if no errors
+  };
+
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Validation: Ensure all fields are filled
-    if (!title || !ingredients || !instructions) {
-      setError("All fields are required.");
-      return;
-    }
+    if (!validate()) return; // Stop execution if validation fails
 
     // Convert ingredients and instructions to an array
     const newRecipe = {
-      id: Date.now(), // Temporary ID
+      id: Date.now(), // Temporary unique ID
       title,
       summary: instructions.substring(0, 100) + "...", // Generate a short summary
       image: "https://via.placeholder.com/150", // Placeholder image
@@ -28,18 +38,16 @@ const AddRecipeForm = ({ onAddRecipe }) => {
     // Pass new recipe to parent component
     onAddRecipe(newRecipe);
 
-    // Reset form fields
+    // Reset form fields after successful submission
     setTitle("");
     setIngredients("");
     setInstructions("");
-    setError("");
+    setErrors({});
   };
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg">
       <h2 className="text-2xl font-bold mb-4">Add a New Recipe</h2>
-      
-      {error && <p className="text-red-500 mb-2">{error}</p>}
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Recipe Title */}
@@ -52,6 +60,7 @@ const AddRecipeForm = ({ onAddRecipe }) => {
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Enter recipe title"
           />
+          {errors.title && <p className="text-red-500 text-sm">{errors.title}</p>}
         </div>
 
         {/* Ingredients */}
@@ -64,6 +73,7 @@ const AddRecipeForm = ({ onAddRecipe }) => {
             onChange={(e) => setIngredients(e.target.value)}
             placeholder="List ingredients, each on a new line"
           ></textarea>
+          {errors.ingredients && <p className="text-red-500 text-sm">{errors.ingredients}</p>}
         </div>
 
         {/* Instructions */}
@@ -76,6 +86,7 @@ const AddRecipeForm = ({ onAddRecipe }) => {
             onChange={(e) => setInstructions(e.target.value)}
             placeholder="List steps, each on a new line"
           ></textarea>
+          {errors.instructions && <p className="text-red-500 text-sm">{errors.instructions}</p>}
         </div>
 
         {/* Submit Button */}
