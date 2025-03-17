@@ -46,8 +46,8 @@ const AddRecipeForm = ({ onAddRecipe }) => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">Add a New Recipe</h2>
+    <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg md:p-8">
+      <h2 className="text-2xl font-bold mb-4 md:text-3xl">Add a New Recipe</h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Recipe Title */}
@@ -55,7 +55,7 @@ const AddRecipeForm = ({ onAddRecipe }) => {
           <label className="block font-semibold">Recipe Title</label>
           <input
             type="text"
-            className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 md:p-3"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Enter recipe title"
@@ -67,7 +67,7 @@ const AddRecipeForm = ({ onAddRecipe }) => {
         <div>
           <label className="block font-semibold">Ingredients (one per line)</label>
           <textarea
-            className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 md:p-3 md:h-32"
             rows="4"
             value={ingredients}
             onChange={(e) => setIngredients(e.target.value)}
@@ -80,7 +80,7 @@ const AddRecipeForm = ({ onAddRecipe }) => {
         <div>
           <label className="block font-semibold">Preparation Steps (one per line)</label>
           <textarea
-            className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 md:p-3 md:h-32"
             rows="4"
             value={instructions}
             onChange={(e) => setInstructions(e.target.value)}
@@ -92,7 +92,7 @@ const AddRecipeForm = ({ onAddRecipe }) => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white font-bold py-2 rounded-lg hover:bg-blue-700 transition"
+          className="w-full bg-blue-500 text-white font-bold py-2 rounded-lg hover:bg-blue-700 transition md:py-3"
         >
           Add Recipe
         </button>
