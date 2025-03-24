@@ -1,9 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://api.github.com/users/";
-
 export const fetchUserData = async (username, location, minRepos) => {
-
   try {
     let query = [];
 
@@ -13,12 +10,11 @@ export const fetchUserData = async (username, location, minRepos) => {
 
     const queryString = query.join("+");
 
-    const response = await fetch(`https://api.github.com/search/users?q=${queryString}`);
-    const data = await response.json();
+    const response = await axios.get(`https://api.github.com/search/users?q=${queryString}`);
 
-    console.log("GitHub API Response:", data); // Debugging
+    console.log("GitHub API Response:", response.data); // Debugging
 
-    return data.items || []; // Ensure it's an array
+    return response.data.items || []; // Ensure it's an array
   } catch (error) {
     console.error("Error fetching data:", error);
     return [];
